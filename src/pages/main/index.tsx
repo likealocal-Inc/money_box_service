@@ -68,7 +68,7 @@ export default function Main() {
         <div className='absolute top-[47px] ml-[630px]'>
           <select
             id='countries'
-            className='rounded-xl bg-[#D8F0FD] text-[#212E56] font-bold'
+            className='rounded-2xl bg-[#D8F0FD] text-[#212E56] font-bold text-2xl'
             onChange={(e) => {
               const lang = e.target.value;
               onChangeLang(lang as LangType);
