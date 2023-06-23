@@ -392,8 +392,8 @@ export default function Main() {
               <Image
                 className='pt-[34px]'
                 src={`/img/` + langData["qr-img"]}
-                width={140}
-                height={137.88}
+                width={250}
+                height={250}
                 alt=''
               />
             </div>
