@@ -5,7 +5,7 @@
 .page-1 {
   background: #ffffff;
   width: 860px;
-  height: 3100px;
+  height: 3900px;
   position: relative;
   overflow: hidden;
 }
@@ -37,8 +37,6 @@
   color: #ffffff;
   text-align: center;
   font: 500 26px/30px "Heiti SC", sans-serif;
-}
-.group-51 {
 }
 .x {
   color: #ffffff;
@@ -495,10 +493,10 @@
 .rectangle-13 {
   background: #212e56;
   width: 899px;
-  height: 490px;
+  height: 1100px;
   position: absolute;
   left: 0px;
-  top: 2621px;
+  top: 2840px;
 }
 .group-68 {
   position: absolute;
@@ -507,26 +505,37 @@
 .please-reserve-at-least-24-hours-before-the-taxi-pickup-time-if-you-want-to-make-a-same-day-reservation-please-contact-like-a-local-customer-support-this-discount-is-limited-to-the-airport-drop-off-service-if-you-need-other-taxi-services-please-contact-like-a-local-customer-support-cancellation-or-refund-is-not-available-once-you-complete-the-reservation-onsite-if-you-want-to-change-the-pick-up-date-or-time-you-may-contact-like-a-local-customer-support-at-least-48-hours-before-the-scheduled-pickup-time-reservation-cannot-be-changed-on-the-same-day {
   color: #ffffff;
   text-align: left;
-  font: 400 24px/140% "Cairo", sans-serif;
+  font: 400 31px/140% "Cairo", sans-serif;
   position: absolute;
   left: 42px;
-  top: 2688px;
-  width: 580px;
+  top: 2920px;
+  width: 770px;
   white-space: pre-wrap;
+  margin-top: 10px;
 }
 .reminders {
+  margin-bottom: 10px;
   color: #ffffff;
   text-align: left;
-  font: 700 26px/150% "Cairo", sans-serif;
+  font: 700 32px/150% "Cairo", sans-serif;
   position: absolute;
   left: 42px;
-  top: 2647px;
+  top: 2880px;
   width: 122px;
   height: 41.28px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
+
+.polygon-12 {
+  position: absolute;
+  left: 480px;
+  top: 3600px;
+  transform: translate(-70.8px, -33.75px);
+  overflow: visible;
+}
+
 .vector {
   position: absolute;
   left: 246px;
@@ -965,7 +974,7 @@
   height: 73px;
   position: absolute;
   left: 284px;
-  top: 2483px;
+  top: 2723px;
 }
 .group-26 {
   width: 124px;
@@ -983,7 +992,7 @@
   font: 700 40px/40px "Cairo", sans-serif;
   position: absolute;
   left: 365px;
-  top: 2500px;
+  top: 2738px;
 }
 .money-box {
   color: #ffffff;
@@ -1008,7 +1017,7 @@
   height: 73px;
   position: absolute;
   left: 284px;
-  top: 777px;
+  top: 780px;
 }
 .group-262 {
   width: 190px;
@@ -1037,40 +1046,35 @@
   overflow: visible;
 }
 
-.polygon-12 {
-  position: absolute;
-  left: 784.88px;
-  top: 2798px;
-  transform: translate(-70.8px, -33.75px);
-  overflow: visible;
+.group-253 {
+  width: 77px;
+  height: 40px;
+  position: static;
 }
+
 .rectangle-15 {
   background: #d8f0fd;
   border-radius: 10px;
   width: 122px;
   height: 42px;
   position: absolute;
-  left: 686px;
-  top: 2746px;
+  left: 390px;
+  top: 3550px;
 }
-.group-253 {
-  width: 77px;
-  height: 40px;
-  position: static;
-}
+
 .english {
   color: #212e56;
   text-align: left;
   font: 400 25px/40px "Cairo", sans-serif;
   position: absolute;
-  left: 690px;
-  top: 2746px;
+  left: 390px;
+  top: 3550px;
   width: 110px;
 }
 .english-2 {
   position: absolute;
-  left: 677px;
-  top: 2804px;
+  left: 385px;
+  top: 3620px;
 }
 
 .group-92 {

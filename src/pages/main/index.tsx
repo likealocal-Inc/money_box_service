@@ -82,14 +82,14 @@ export default function Main() {
         </div>
 
         {/* 입력내용 */}
-        <div className='absolute w-[674px] h-full bg-[#EAF7FF] top-[900px] ml-[92px]'>
+        <div className='absolute w-[720px] h-full bg-[#EAF7FF] top-[900px] ml-[72px]'>
           {/* 공항선택 */}
           <div className='flex flex-col'>
-            <div className='text-[30px] text-[#212E56] bg-white pl-[15px] h-[55px]'>
+            <div className='text-[45px] text-[#212E56] bg-slate-200 pl-[15px] pt-[10px] h-[90px] rounded-lg'>
               {langData["c2-q"]}
             </div>
             <div className='mt-[3px]'></div>
-            <div className='text-[30px] bg-white pl-[15px] h-[142px]'>
+            <div className='bg-white pl-[15px] h-[200px]'>
               <div className='flex items-center mt-[12px]'>
                 <input
                   id='default-radio-1'
@@ -100,12 +100,12 @@ export default function Main() {
                 />
                 <label
                   htmlFor='default-radio-1'
-                  className='ml-[12px] text-[23px] text-[#212E56]'
+                  className='ml-[12px] text-[35px] text-[#212E56]'
                 >
                   {langData["c2-a1"]}
                 </label>
               </div>
-              <div className='flex items-center mt-[3px]'>
+              <div className='flex items-center mt-[10px]'>
                 <input
                   checked
                   id='default-radio-2'
@@ -116,12 +116,12 @@ export default function Main() {
                 />
                 <label
                   htmlFor='default-radio-2'
-                  className='ml-[12px] text-[23px] text-[#212E56]'
+                  className='ml-[12px] text-[35px] text-[#212E56]'
                 >
                   {langData["c2-a2"]}
                 </label>
               </div>
-              <div className='flex items-center mt-[3px]'>
+              <div className='flex items-center mt-[10px]'>
                 <input
                   checked
                   id='default-radio-3'
@@ -132,7 +132,7 @@ export default function Main() {
                 />
                 <label
                   htmlFor='default-radio-3'
-                  className='ml-[12px] text-[23px] text-[#212E56]'
+                  className='ml-[12px] text-[35px] text-[#212E56]'
                 >
                   {langData["c2-a3"]}
                 </label>
@@ -142,58 +142,156 @@ export default function Main() {
           <div className='mt-[26px]'></div>
           {/* 이름 */}
           <div className='flex flex-row '>
-            <div className='text-[#212E56] pl-[15px] pr-[15px] bg-white w-[275px] h-[55px] text-center text-[30px] '>
+            <div className='text-[#212E56] pl-[15px] pr-[15px] rounded-lg bg-slate-200 w-[350px] h-[90px] pt-[10px] text-center text-[40px] '>
               {langData["c3-q"]}
             </div>
-            <input className='ml-[5px] w-[440px] h-[55px] text-black text-[25px] pl-2' />
+            <input className='ml-[5px] w-[390px] h-[90px] text-black pl-2 text-[40px]' />
           </div>
           <div className='mt-[26px]'></div>
           {/* 픽업위치 */}
           <div className='flex flex-col'>
-            <div className='bg-white w-[674px] pl-[15px]'>
-              <div className='text-[#212E56] text-[30px] '>
+            <div className='bg-slate-200 h-[100px] w-[720px] pl-[15px] flex items-center rounded-lg'>
+              <div className='text-[#212E56] text-[40px]'>
                 {langData["c4-q-1"]}
               </div>
-              <div className='text-[#1369F9] text-[25px]'>
+              <div className='text-[#1369F9] text-[35px] pl-[15px]'>
+                {"["}
                 {langData["c4-q-2"]}
+                {"]"}
               </div>
             </div>
             <div className='mt-[3px]'></div>
-            <input className='w-[674px] h-[55px] text-black text-[25px] pl-2' />
+            <input className='w-[720px] h-[85px] text-black text-[45px] pl-5' />
           </div>
 
           <div className='mt-[26px]'></div>
 
           {/* 픽업주소 */}
           <div className='flex flex-col'>
-            <div className='bg-white w-[674px] pl-[15px]'>
-              <div className='text-[#212E56] text-[30px]'>
+            <div className='bg-slate-200 w-[720px] pl-[15px] h-[140px] pt-[10px] rounded-lg'>
+              <div className='text-[#212E56] text-[40px]'>
                 {langData["c5-q-1"]}
               </div>
-              <div className='text-[#1369F9] text-[25px]'>
-                {langData["c5-q-1"]}
+              <div className='text-[#1369F9] text-[35px] pl-[15px]'>
+                {"["}
+                {langData["c5-q-2"]}
+                {"]"}
               </div>
             </div>
             <div className='mt-[3px] '></div>
-            <input className='w-[674px] h-[55px] text-black text-[25px] pl-2' />
+            <input className='w-[720px] h-[85px] text-black text-[40px] pl-5' />
           </div>
 
           <div className='mt-[26px]'></div>
 
           {/* 고객수 */}
           <div className='flex flex-col'>
-            <div className='bg-white w-[674px] pl-[15px]'>
-              <div className='text-[#212E56] text-[30px]'>
+            <div className='bg-slate-200 h-[100px] w-[720px] pl-[15px] rounded-lg flex items-center'>
+              <div className='text-[#212E56] text-[40px]'>
                 {langData["c6-q-2"]}
               </div>
-              <div className='text-[#1369F9] text-[25px]'>
+              <div className='text-[#1369F9] text-[35px] pl-[20px]'>
                 {langData["c6-q-1"]}
               </div>
             </div>
             <div className='mt-[3px]'></div>
 
-            <div className='bg-white pl-[15px]'>
-              {passengersNum.map((d, k) => (
+            <div className='bg-white pl-[30px] h-[160px] w-[720px] pr-[30px]'>
+              <div className='flex justify-between'>
+                <div className='flex items-center mt-[12px]'>
+                  <input
+                    id='default-radio-1'
+                    type='radio'
+                    value=''
+                    name='default-radio'
+                    className='w-10 h-10 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                  />
+                  <label
+                    htmlFor='default-radio-1'
+                    className='ml-[12px] text-[35px] text-[#212E56]'
+                  >
+                    1
+                  </label>
+                </div>
+                <div className='flex items-center mt-[12px]'>
+                  <input
+                    id='default-radio-1'
+                    type='radio'
+                    value=''
+                    name='default-radio'
+                    className='w-10 h-10 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                  />
+                  <label
+                    htmlFor='default-radio-1'
+                    className='ml-[12px] text-[35px] text-[#212E56]'
+                  >
+                    2
+                  </label>
+                </div>
+                <div className='flex items-center mt-[12px]'>
+                  <input
+                    id='default-radio-1'
+                    type='radio'
+                    value=''
+                    name='default-radio'
+                    className='w-10 h-10 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                  />
+                  <label
+                    htmlFor='default-radio-1'
+                    className='ml-[12px] text-[35px] text-[#212E56]'
+                  >
+                    3
+                  </label>
+                </div>
+              </div>
+              <div className='flex justify-between pt-2'>
+                <div className='flex items-center mt-[12px]'>
+                  <input
+                    id='default-radio-1'
+                    type='radio'
+                    value=''
+                    name='default-radio'
+                    className='w-10 h-10 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                  />
+                  <label
+                    htmlFor='default-radio-1'
+                    className='ml-[12px] text-[35px] text-[#212E56]'
+                  >
+                    4
+                  </label>
+                </div>
+                <div className='flex items-center mt-[12px]'>
+                  <input
+                    id='default-radio-1'
+                    type='radio'
+                    value=''
+                    name='default-radio'
+                    className='w-10 h-10 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                  />
+                  <label
+                    htmlFor='default-radio-1'
+                    className='ml-[12px] text-[35px] text-[#212E56]'
+                  >
+                    5
+                  </label>
+                </div>
+                <div className='flex items-center mt-[12px]'>
+                  <input
+                    id='default-radio-1'
+                    type='radio'
+                    value=''
+                    name='default-radio'
+                    className='w-10 h-10 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                  />
+                  <label
+                    htmlFor='default-radio-1'
+                    className='ml-[12px] text-[35px] text-[#212E56]'
+                  >
+                    6
+                  </label>
+                </div>
+              </div>
+              {/* {passengersNum.map((d, k) => (
                 <>
                   <div key={k} className='flex items-center mt-[12px]'>
                     <input
@@ -205,13 +303,13 @@ export default function Main() {
                     />
                     <label
                       htmlFor='default-radio-1'
-                      className='ml-[12px] text-[23px] text-[#212E56]'
+                      className='ml-[12px] text-[35px] text-[#212E56]'
                     >
                       {d}
                     </label>
                   </div>
                 </>
-              ))}
+              ))} */}
             </div>
           </div>
 
@@ -219,48 +317,48 @@ export default function Main() {
 
           {/* 픽업날짜 */}
           <div className='flex flex-col'>
-            <div className='bg-white w-[674px] pl-[15px]'>
-              <div className='text-[#212E56] text-[30px]'>
+            <div className='bg-slate-200 w-[720px] pl-[15px] rounded-lg py-[10px] flex items-center'>
+              <div className='text-[#212E56] text-[40px]'>
                 {langData["c7-q-1"]}
               </div>
-              <div className='text-[#1369F9] text-[25px]'>
+              <div className='text-[#1369F9] text-[35px] pl-[20px]'>
                 {langData["c7-q-2"]}
               </div>
             </div>
             <div className='mt-[3px] '></div>
-            <input className='w-[674px] h-[55px] text-black text-[25px] pl-2' />
+            <input className='w-[720px] h-[75px] text-black text-[35px] pl-5' />
           </div>
 
           <div className='mt-[26px]'></div>
 
           {/* 픽업시간 */}
           <div className='flex flex-col'>
-            <div className='bg-white w-[674px] pl-[15px]'>
-              <div className='text-[#212E56] text-[30px]'>
+            <div className='bg-slate-200 w-[720px] pl-[15px] rounded-lg py-[10px] flex items-center'>
+              <div className='text-[#212E56] text-[40px]'>
                 {langData["c8-q-1"]}
               </div>
-              <div className='text-[#1369F9] text-[25px]'>
+              <div className='text-[#1369F9] text-[35px] pl-[20px]'>
                 {langData["c8-q-2"]}
               </div>
             </div>
             <div className='mt-[3px] '></div>
-            <input className='w-[674px] h-[55px] text-black text-[25px] pl-2' />
+            <input className='w-[720px] h-[75px] text-black text-[35px] pr-2 pl-5' />
           </div>
 
           <div className='mt-[26px]'></div>
 
           {/* Whatsapp ID */}
           <div className='flex flex-col'>
-            <div className='bg-white w-[674px] pl-[15px]'>
-              <div className='text-[#212E56] text-[30px]'>
+            <div className='bg-slate-200 w-[720px] pl-[15px] py-[20px] rounded-lg'>
+              <div className='text-[#212E56] text-[40px]'>
                 {langData["c9-q-1"]}
               </div>
-              <div className='text-[#1369F9] text-[25px]'>
+              <div className='text-[#1369F9] text-[30px]'>
                 {langData["c9-q-2"]}
               </div>
             </div>
             <div className='mt-[3px] '></div>
-            <input className='w-[674px] h-[55px] text-black text-[25px] pl-2' />
+            <input className='w-[720px] h-[75px] text-black text-[35px] pl-5' />
           </div>
 
           {/* end */}
@@ -1254,16 +1352,13 @@ export default function Main() {
             fill='white'
           />
         </svg>
-        <div className='group-67'>
-          <div className='group-52'>
-            <div className='rectangle-1'></div>
-
-            <div className='group-26'>
-              <div className='group-25'>
-                <Link className='submit' href={"/done"}>
-                  {langData["submit"]}
-                </Link>
-              </div>
+        <div className='group-52'>
+          <div className='rectangle-1'></div>
+          <div className='group-26'>
+            <div className='group-25'>
+              <Link className='submit' href={"/done"}>
+                {langData["submit"]}
+              </Link>
             </div>
           </div>
         </div>
