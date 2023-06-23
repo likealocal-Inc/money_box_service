@@ -5,6 +5,7 @@ import langDic from "../../app/lang.json";
 import Image from "next/image";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export type LangType = "en" | "cns" | "cnb" | "jp";
 export default function Main() {
@@ -1259,7 +1260,9 @@ export default function Main() {
 
             <div className='group-26'>
               <div className='group-25'>
-                <div className='submit'>{langData["submit"]}</div>
+                <Link className='submit' href={"/done"}>
+                  {langData["submit"]}
+                </Link>
               </div>
             </div>
           </div>
