@@ -24,7 +24,13 @@
     "submit": "Sumbit",
     "desc-h": "Reminders",
     "desc": "○ Please reserve at least 24 hours before the taxi pickup time. If you want to make a same-day reservation, please contact Like A Local customer support.\r\n○ This discount is limited to the airport drop-off service. If you need other taxi services, please contact Like A Local customer support. \r\n○ Cancellation or refund is not available once you complete the reservation onsite. If you want to change the pick-up date or time, you may contact Like A Local customer support at least 48 hours before the scheduled pickup time.\r\n(Reservation cannot be changed on the same day)",
-    "qr-lang": "English"
+    "qr-lang": "English",
+    "qr-img": "whatapp-qr.png",
+    "done-h1": "Application submitted",
+    "done-h2": "Please scan the QR code below to add Like A Local customer support",
+    "done-h3": "Please show this page to the staff and pay with cash",
+    "done-h4": "Your taxi dispatch information will be sent within 24 hours via the account you add",
+    "done-h5": "Please make sure you add our customer support"
   },
   "cns": {
     "h1": "现场申请优惠",
@@ -51,7 +57,13 @@
     "submit": "填写完成",
     "desc-h": "注意事项",
     "desc": "○ 请在乘车24小时前起进行预约，若需要当天预约，请与LIKE A LOCAL客服取得联系。\n\r○ 该商品为机场送机指定商品，如需其他出租车商品，请与LIKE A LOCAL客服取得联系。\n\r○ 在现场无法对预约商品进行取消及退款。在乘车日48小时前，与LIKE A LOCAL客服取得联系，\n\r可更改使用日期与时间。该服务不支持当天变更。",
-    "qr-lang": "简体中文"
+    "qr-lang": "简体中文",
+    "qr-img": "wechat_qr.png",
+    "done-h1": "申请资料已填写完成",
+    "done-h2": "请扫描下方二维码，便于接收预定车辆信息",
+    "done-h3": "请向前台职员出示该页面，并进行现场支付(仅限现金)",
+    "done-h4": "将在24小时之内，通过所填写的社交平台发送车辆信息",
+    "done-h5": "请务添加客服账号，并与客服取得联系"
   },
   "cnb": {
     "h1": "現場申請優惠",
@@ -78,7 +90,13 @@
     "submit": "填寫完成",
     "desc-h": "注意事項",
     "desc": "○ 請在乘車24小時前進行預約，若有急需當日使用的顧客，請與Like A Local客服聯絡 \n\r○ 此優惠目前僅限於送機服務，有需要其他計程車接送服務的顧客，請與Like A Local客服聯絡\n\r○ 在現場預約完成後無法取消或退款，但在乘車日的48小時前，可與Like A Local客服聯絡變更乘車時間或日期\n\r(當日無法變更)",
-    "qr-lang": "繁體中文"
+    "qr-lang": "繁體中文",
+    "qr-img": "line_chb_qr.png",
+    "done-h1": "您的申請資料已填寫完成",
+    "done-h2": "請掃描下方 QR code 客服帳號配車訊息將會以訊息傳送給您",
+    "done-h3": "請向櫃檯員工出示[申請完成]此頁面 並進行現金付款",
+    "done-h4": "我們將會在24小時以內，透過您加入的帳號，傳送配車訊息給您",
+    "done-h5": "請務必加入客服帳號"
   },
   "jp": {
     "h1": "店内申し込み限定の特典",
@@ -105,6 +123,12 @@
     "submit": "作成完了",
     "desc-h": "注意事項",
     "desc": "○ 当日予約の場合、店舗での手続きは難しくなっておりますのでご利用の当日に予約をご希望のお客様はLike A Local公式アカウントへお問い合わせください。\n\r○ 本サービスは空港お送り限定となっており、他のタクシーサービスをご希望のお客様はLike A Local公式アカウントへお問い合わせください。\n\r○ 店舗でご予約されたサービスのキャンセルや返金はできません。但し、利用日時から48時間前まではLike A Localにて利用日時の変更を受けたまりますのでお問い合わせください。\n\r(当日のご利用には変更できません。)",
-    "qr-lang": "日本語"
+    "qr-lang": "日本語",
+    "qr-img": "line_japan_qr.png",
+    "done-h1": "申込書の作成が完了しました",
+    "done-h2": "配車情報のご案内のため、下記のQRコードを読み取って公式アカウントを友だち追加",
+    "done-h3": "デスクにてこの申込ページを提示し、現地払いに進む",
+    "done-h4": "最大24時間以内に配車情報をご登録いただいたSNSにてご案内",
+    "done-h5": "公式アカウントの友だち 追加をぜひお願いします"
   }
 }

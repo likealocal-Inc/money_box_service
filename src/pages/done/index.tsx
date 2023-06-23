@@ -1,10 +1,27 @@
 import "../../app/globals.css";
 import "../../app/css/main.css";
 import "flowbite";
-
+import langDic from "../../app/lang.json";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { LangType } from "../main";
 
 export default function Done() {
+  const [langData, setLangData] = useState<any>();
+  useEffect(() => {
+    let tempLang: LangType = "en";
+    const nowLang = localStorage.getItem("lang");
+    if (nowLang === null || nowLang === undefined) {
+      localStorage.setItem("lang", "en");
+    } else {
+      tempLang = nowLang as LangType;
+    }
+    setLangData(langDic[tempLang]);
+  }, []);
+
+  if (langData === undefined) {
+    return "Loading...";
+  }
   return (
     <div className='bg-[#212e56] w-[860px] h-[1570px] relative overflow-hidden'>
       <div className='bg-[rgba(234,247,255,0.50)] rounded-[50%] w-[180px] h-[180px] absolute left-[340px] top-[353px]'></div>
@@ -45,7 +62,7 @@ export default function Done() {
         className='text-[#ffffff] text-center absolute left-[191px] top-[229px]'
         style={{ font: "700 50px/60px 'Cairo', sans-serif" }}
       >
-        Application submitted
+        {langData["done-h1"]}
       </div>
 
       <div className='absolute' style={{ inset: "0" }}>
@@ -74,10 +91,10 @@ export default function Done() {
           </div>
 
           <div
-            className='text-[#000000] text-left absolute left-[214px] top-[663px] w-[527px] h-[84px]'
-            style={{ font: "400 32px/40px 'Cairo', sans-serif" }}
+            className='break-words text-[#000000] text-left absolute left-[214px] top-[663px] w-[527px] h-[84px]'
+            style={{ font: "400 32px/40px 'Cairo', sans-serif " }}
           >
-            Please scan the QR code below to add Like A Local customer support
+            {langData["done-h2"]}
             <br />
           </div>
 
@@ -85,7 +102,7 @@ export default function Done() {
             className='text-[#000000] text-justified absolute left-[214px] top-[767px] w-[527px] h-[71px]'
             style={{ font: "400 32px/40px 'Cairo', sans-serif" }}
           >
-            Please show this page to the staff and pay with cash
+            {langData["done-h3"]}
             <br />
           </div>
 
@@ -93,8 +110,7 @@ export default function Done() {
             className='text-[#000000] text-left absolute left-[212px] top-[866px] w-[529px] h-[71px]'
             style={{ font: "400 32px/40px 'Cairo', sans-serif" }}
           >
-            Your taxi dispatch information will be sent within 24 hours via the
-            account you add
+            {langData["done-h4"]}
             <br />
           </div>
         </div>
@@ -149,11 +165,10 @@ export default function Done() {
         </div>
 
         <div
-          className='text-[#1369f9] text-left absolute left-[285px] top-[1123px]'
+          className='break-wor text-[#1369f9] text-left absolute left-[285px] top-[1100px] w-[392px]'
           style={{ font: "700 35px/40px 'Cairo', sans-serif" }}
         >
-          Please make sure you <br />
-          add our customer support
+          {langData["done-h5"]}
         </div>
       </div>
 
@@ -177,10 +192,10 @@ export default function Done() {
 
         <div className='w-[102px] h-9 static'>
           <div
-            className='text-[#ffffff] text-left absolute left-[379px] top-[1233px]'
+            className='text-[#ffffff] text-left absolute left-[340px] top-[1233px] w-[180px]'
             style={{ font: "400 30px 'Inter', sans-serif" }}
           >
-            English
+            <div className='text-center'>{langData["qr-lang"]}</div>
           </div>
         </div>
       </div>

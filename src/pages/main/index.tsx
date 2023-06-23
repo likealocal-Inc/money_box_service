@@ -6,20 +6,17 @@ import Image from "next/image";
 
 import { useEffect, useState } from "react";
 
-type LangType = "en" | "cns" | "cnb" | "jp";
+export type LangType = "en" | "cns" | "cnb" | "jp";
 export default function Main() {
-  const [lang, setLang] = useState<string>();
   const [langData, setLangData] = useState<any>();
   const passengersNum = [1, 2, 3, 4, 5, 6];
   useEffect(() => {
     let tempLang: LangType = "en";
     const nowLang = localStorage.getItem("lang");
     if (nowLang === null || nowLang === undefined) {
-      setLang("en");
       localStorage.setItem("lang", "en");
     } else {
       tempLang = nowLang as LangType;
-      setLang(nowLang);
     }
     setLangData(langDic[tempLang]);
   }, []);
@@ -1323,7 +1320,7 @@ export default function Main() {
         </div>
         <Image
           className='english-2'
-          src='/img/english2.png'
+          src={`/img/` + langData["qr-img"]}
           width={140}
           height={137.88}
           alt=''
