@@ -82,7 +82,7 @@ export default function Main() {
         </div>
 
         {/* 입력내용 */}
-        <div className='absolute w-[720px] h-full bg-[#EAF7FF] top-[900px] ml-[72px]'>
+        <div className='absolute w-[720px] bg-[#EAF7FF] top-[900px] ml-[72px]'>
           {/* 공항선택 */}
           <div className='flex flex-col'>
             <div className='text-[45px] text-[#212E56] bg-slate-200 pl-[15px] pt-[10px] h-[90px] rounded-lg'>
@@ -363,12 +363,43 @@ export default function Main() {
 
           {/* end */}
         </div>
-
-        <div className='rectangle-13'></div>
-        <div className='reminders'>{langData["desc-h"]}</div>
-        <div className='please-reserve-at-least-24-hours-before-the-taxi-pickup-time-if-you-want-to-make-a-same-day-reservation-please-contact-like-a-local-customer-support-this-discount-is-limited-to-the-airport-drop-off-service-if-you-need-other-taxi-services-please-contact-like-a-local-customer-support-cancellation-or-refund-is-not-available-once-you-complete-the-reservation-onsite-if-you-want-to-change-the-pick-up-date-or-time-you-may-contact-like-a-local-customer-support-at-least-48-hours-before-the-scheduled-pickup-time-reservation-cannot-be-changed-on-the-same-day'>
-          {langData["desc"]}
+        <div className='absolute top-[2880px] bg-[#212e56] w-full h-full'>
+          <div className='flex flex-col'>
+            <div className='text-[38px] pt-[55px] pl-[80px]'>
+              {langData["desc-h"]}
+            </div>
+            <div className='text-[34px] whitespace-pre-wrap tracking-wide pl-[80px] pr-[80px] pt-[10px]'>
+              {langData["desc"]}
+            </div>
+            <div className='flex flex-col items-center justify-center pt-5'>
+              <div className='rectangle-15'></div>
+              <svg
+                className='polygon-12'
+                width='76'
+                height='45'
+                viewBox='0 0 76 45'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  d='M37.94 45L5.08314 11.25L70.7969 11.25L37.94 45Z'
+                  fill='#D8F0FD'
+                />
+              </svg>
+              <div className='text-black mt-[-60px] text-2xl font-bold'>
+                <div className='text-center'>{langData["qr-lang"]}</div>
+              </div>
+              <Image
+                className='pt-[34px]'
+                src={`/img/` + langData["qr-img"]}
+                width={140}
+                height={137.88}
+                alt=''
+              />
+            </div>
+          </div>
         </div>
+
         <svg
           className='vector'
           width='1'
@@ -1393,36 +1424,6 @@ export default function Main() {
             />
           </svg>
         </div>
-        <div className='group-85'>
-          <svg
-            className='polygon-12'
-            width='76'
-            height='45'
-            viewBox='0 0 76 45'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              d='M37.94 45L5.08314 11.25L70.7969 11.25L37.94 45Z'
-              fill='#D8F0FD'
-            />
-          </svg>
-
-          <div className='rectangle-15'></div>
-
-          <div className='group-253'>
-            <div className='english'>
-              <div className='text-center'>{langData["qr-lang"]}</div>
-            </div>
-          </div>
-        </div>
-        <Image
-          className='english-2'
-          src={`/img/` + langData["qr-img"]}
-          width={140}
-          height={137.88}
-          alt=''
-        />
       </div>
     </>
   );

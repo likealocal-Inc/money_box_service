@@ -494,7 +494,6 @@
   background: #212e56;
   width: 899px;
   height: 1100px;
-  position: absolute;
   left: 0px;
   top: 2840px;
 }
@@ -518,9 +517,7 @@
   color: #ffffff;
   text-align: left;
   font: 700 32px/150% "Cairo", sans-serif;
-  position: absolute;
-  left: 42px;
-  top: 2880px;
+  left: 80px;
   width: 122px;
   height: 41.28px;
   display: flex;
@@ -529,10 +526,8 @@
 }
 
 .polygon-12 {
-  position: absolute;
+  margin-top: -20px;
   left: 480px;
-  top: 3600px;
-  transform: translate(-70.8px, -33.75px);
   overflow: visible;
 }
 
@@ -1035,7 +1030,7 @@
   font: 700 40px/40px "Cairo", sans-serif;
   position: absolute;
   left: 290px;
-  top: 789px;
+  top: 793px;
   width: 280px;
 }
 .polygon-1 {
@@ -1057,24 +1052,18 @@
   border-radius: 10px;
   width: 122px;
   height: 42px;
-  position: absolute;
   left: 390px;
-  top: 3550px;
 }
 
 .english {
   color: #212e56;
   text-align: left;
   font: 400 25px/40px "Cairo", sans-serif;
-  position: absolute;
   left: 390px;
-  top: 3550px;
   width: 110px;
 }
 .english-2 {
-  position: absolute;
   left: 385px;
-  top: 3620px;
 }
 
 .group-92 {
