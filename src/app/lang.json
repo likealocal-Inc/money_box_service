@@ -30,7 +30,8 @@
     "done-h2": "Please scan the QR code below to add Like A Local customer support",
     "done-h3": "Please show this page to the staff and pay with cash",
     "done-h4": "Your taxi dispatch information will be sent within 24 hours via the account you add",
-    "done-h5": "Please make sure you add our customer support"
+    "done-h5": "Please make sure you add our customer support",
+    "lang": "English"
   },
   "cns": {
     "h1": "现场申请优惠",
@@ -63,7 +64,8 @@
     "done-h2": "请扫描下方二维码，便于接收预定车辆信息",
     "done-h3": "请向前台职员出示该页面，并进行现场支付(仅限现金)",
     "done-h4": "将在24小时之内，通过所填写的社交平台发送车辆信息",
-    "done-h5": "请务添加客服账号，并与客服取得联系"
+    "done-h5": "请务添加客服账号，并与客服取得联系",
+    "lang": "更换语言"
   },
   "cnb": {
     "h1": "現場申請優惠",
@@ -96,7 +98,8 @@
     "done-h2": "請掃描下方 QR code 客服帳號配車訊息將會以訊息傳送給您",
     "done-h3": "請向櫃檯員工出示[申請完成]此頁面 並進行現金付款",
     "done-h4": "我們將會在24小時以內，透過您加入的帳號，傳送配車訊息給您",
-    "done-h5": "請務必加入客服帳號"
+    "done-h5": "請務必加入客服帳號",
+    "lang": "更換語言"
   },
   "jp": {
     "h1": "店内申し込み限定の特典",
@@ -129,6 +132,7 @@
     "done-h2": "配車情報のご案内のため、下記のQRコードを読み取って公式アカウントを友だち追加",
     "done-h3": "デスクにてこの申込ページを提示し、現地払いに進む",
     "done-h4": "最大24時間以内に配車情報をご登録いただいたSNSにてご案内",
-    "done-h5": "公式アカウントの友だち 追加をぜひお願いします"
+    "done-h5": "公式アカウントの友だち 追加をぜひお願いします",
+    "lang": "言語を選択"
   }
 }

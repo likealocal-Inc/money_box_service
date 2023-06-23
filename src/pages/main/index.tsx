@@ -75,9 +75,9 @@ export default function Main() {
             }}
           >
             <option value='en'>English</option>
-            <option value='cns'>Chinese</option>
-            <option value='cnb'>Chinese</option>
-            <option value='jp'>Japanese</option>
+            <option value='cns'>更换语言</option>
+            <option value='cnb'>更換語言</option>
+            <option value='jp'>言語を選択</option>
           </select>
         </div>
 
