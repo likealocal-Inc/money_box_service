@@ -20,7 +20,7 @@
 .rectangle-12 {
   background: #eaf7ff;
   width: 1186px;
-  height: 2121px;
+  height: 2200px;
   position: absolute;
   left: -113px;
   top: 723px;
@@ -969,7 +969,7 @@
   height: 73px;
   position: absolute;
   left: 284px;
-  top: 2723px;
+  top: 2780px;
 }
 .group-26 {
   width: 124px;
@@ -987,7 +987,7 @@
   font: 700 40px/40px "Cairo", sans-serif;
   position: absolute;
   left: 365px;
-  top: 2738px;
+  top: 2795px;
 }
 .money-box {
   color: #ffffff;
@@ -1121,4 +1121,18 @@
   top: 76px;
   transform: translate(-16.79px, -13.5px);
   overflow: visible;
+}
+
+#date {
+  font-size: 30px;
+}
+
+.react-datepicker {
+  transform: scale(2); /* 이 값을 변경하여 달력의 크기를 조절하세요. */
+  position: fixed; /* 달력을 고정 위치에 놓습니다. */
+  top: 0; /* 상단에서 0px 떨어져 있도록 설정합니다. */
+  left: 50%; /* 화면 가운데에 위치하도록 설정합니다. */
+  transform-origin: top center; /* 확대/축소의 기준점을 상단 중앙으로 설정합니다. */
+  margin-left: -0px; /* left 50%에 의해 중앙으로 이동한 것을 보정합니다. 값은 달력의 절반 너비를 의미해야 합니다. */
+  z-index: 1000; /* 다른 요소 위에 달력이 오도록 설정합니다. */
 }

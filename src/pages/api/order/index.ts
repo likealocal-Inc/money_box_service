@@ -10,21 +10,41 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const {
-    airport,
-    name,
-    location,
-    address,
-    passengersCount,
-    date,
-    time,
-    whatappid,
-  } = req.query;
-  //    const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&key=AIzaSyACq7gF8WbQr5oYUIZSNg4AW9hzI0phA6w`;
+  const body = req.body.inputData;
 
   try {
-    // const search = await axios.get(url);
-    res.status(200);
+    const info: any = {};
+    info["신청자"] = body.name;
+    info["탑승자수"] = body.passengersCount;
+    info["SNS 채널"] = "WHATSAPP";
+    info["SNS ID"] = body.whatappid;
+    const data = {
+      outName: "moneybox",
+      orderTitle: "공항샌딩",
+      boardingDate: body.picDate,
+      startLocation: body.location,
+      startAddress: body.address,
+
+      goalLocation: body.airport,
+      goalAddress: "공항샌딩",
+
+      information: info,
+
+      company: "likealocal",
+      else01: "",
+      else02: "",
+      // 2023.06.09 추가 (탑승자, 탑승자 번호)
+      customName: body.name,
+      customPhone: "",
+    };
+
+    axios.post("http://127.0.0.1:8080/api/order/out", data).then((d) => {
+      if (d.data.ok === true) {
+        res.status(200).json(d.data.data);
+      } else {
+        res.status(500).json(d.data);
+      }
+    });
   } catch (err) {
     console.log(err);
   }

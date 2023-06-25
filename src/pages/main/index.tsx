@@ -4,13 +4,38 @@ import "flowbite";
 import langDic from "../../app/lang.json";
 import Image from "next/image";
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import { forwardRef, useEffect, useState } from "react";
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
+import Router from "next/router";
+
+export interface InputData {
+  airport: string;
+  name: string;
+  location: string;
+  address: string;
+  passengersCount: string;
+  picDate: string;
+  whatappid: string;
+}
 export type LangType = "en" | "cns" | "cnb" | "jp";
+
 export default function Main() {
+  const [inputData, setInputData] = useState<InputData>({
+    airport: "",
+    name: "",
+    location: "",
+    address: "",
+    passengersCount: "",
+    picDate: "",
+    whatappid: "",
+  });
+  const [loading, setLoading] = useState(false);
   const [langData, setLangData] = useState<any>();
   const [h, seth] = useState(4100);
+  const [picDate, setPicDate] = useState<Date | null>(new Date());
   const passengersNum = [1, 2, 3, 4, 5, 6];
   useEffect(() => {
     let tempLang: LangType = "en";
@@ -26,14 +51,92 @@ export default function Main() {
     setLangData(langDic[tempLang]);
   }, []);
 
+  // 날짜데이터 세팅
+  useEffect(() => {
+    if (picDate !== null && picDate !== undefined) {
+      setInputData({ ...inputData, picDate: `${picDate}` });
+    }
+  }, [picDate]);
+
   const onChangeLang = (selectLang: LangType) => {
     localStorage.setItem("lang", selectLang);
     setLangData(langDic[selectLang]);
   };
 
-  if (langData === undefined) {
-    return "Loading...";
+  const onSubmit = async () => {
+    setLoading(true);
+    let isOk = true;
+    if (inputData.airport.trim() === "") {
+      isOk = false;
+    } else if (inputData.name.trim() === "") {
+      isOk = false;
+    } else if (inputData.location.trim() === "") {
+      isOk = false;
+    } else if (inputData.address.trim() === "") {
+      isOk = false;
+    } else if (inputData.passengersCount.trim() === "") {
+      isOk = false;
+    } else if (inputData.picDate.trim() === "") {
+      isOk = false;
+    } else if (inputData.whatappid.trim() === "") {
+      isOk = false;
+    }
+
+    if (isOk === false) {
+      alert("You have to Fill Everything");
+    } else {
+      setTimeout(async () => {
+        await axios
+          .post("/api/order", { inputData })
+          .then((d) => {
+            location.replace("/done");
+          })
+          .catch((e) => {
+            setLoading(false);
+            alert("요청실패");
+          });
+        setLoading(false);
+      }, 200);
+    }
+  };
+
+  //
+  if (langData === undefined || loading === true) {
+    return (
+      <div className='flex items-center justify-center h-screen'>
+        <div role='status' className='text-2xl font-bold'>
+          <svg
+            aria-hidden='true'
+            className='inline w-20 h-20 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-yellow-400'
+            viewBox='0 0 100 101'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              d='M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z'
+              fill='currentColor'
+            />
+            <path
+              d='M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z'
+              fill='currentFill'
+            />
+          </svg>
+          <span className='sr-only'>Loading...</span>
+        </div>
+      </div>
+    );
   }
+
+  // eslint-disable-next-line react/display-name
+  const ExampleCustomInput = forwardRef<any>(({ value, onClick }: any, ref) => (
+    <button
+      className='text-[35px] rounded-2xl w-[720px] h-[70px] text-black bg-white text-left pl-[20px]'
+      onClick={onClick}
+      ref={ref}
+    >
+      {value}
+    </button>
+  ));
   return (
     <>
       <div className=''>
@@ -97,14 +200,17 @@ export default function Main() {
               <div className='bg-white pl-[15px] h-[200px]'>
                 <div className='flex items-center mt-[12px]'>
                   <input
-                    id='default-radio-1'
+                    id='airport-1'
                     type='radio'
-                    value=''
-                    name='default-radio'
-                    className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                    name='airportInput'
+                    className='w-8 h-8 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                    onClick={(e) => {
+                      setInputData({ ...inputData, airport: "인천1공항" });
+                      document.getElementById("airport-1")?.focus();
+                    }}
                   />
                   <label
-                    htmlFor='default-radio-1'
+                    htmlFor='airport-1'
                     className='ml-[12px] text-[35px] text-[#212E56]'
                   >
                     {langData["c2-a1"]}
@@ -112,15 +218,17 @@ export default function Main() {
                 </div>
                 <div className='flex items-center mt-[10px]'>
                   <input
-                    checked
-                    id='default-radio-2'
+                    id='airport-2'
                     type='radio'
-                    value=''
-                    name='default-radio'
-                    className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                    name='airportInput'
+                    className='w-8 h-8 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                    onClick={() => {
+                      setInputData({ ...inputData, airport: "인천2공항" });
+                      document.getElementById("airport-2")?.focus();
+                    }}
                   />
                   <label
-                    htmlFor='default-radio-2'
+                    htmlFor='airport-2'
                     className='ml-[12px] text-[35px] text-[#212E56]'
                   >
                     {langData["c2-a2"]}
@@ -128,15 +236,17 @@ export default function Main() {
                 </div>
                 <div className='flex items-center mt-[10px]'>
                   <input
-                    checked
-                    id='default-radio-3'
+                    id='airport-3'
                     type='radio'
-                    value=''
-                    name='default-radio'
-                    className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                    name='airportInput'
+                    className='w-8 h-8 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                    onClick={() => {
+                      setInputData({ ...inputData, airport: "김포공항" });
+                      document.getElementById("airport-3")?.focus();
+                    }}
                   />
                   <label
-                    htmlFor='default-radio-3'
+                    htmlFor='airport-3'
                     className='ml-[12px] text-[35px] text-[#212E56]'
                   >
                     {langData["c2-a3"]}
@@ -144,15 +254,20 @@ export default function Main() {
                 </div>
               </div>
             </div>
-            <div className='mt-[26px]'></div>
+            ,<div className='mt-[40px]'></div>
             {/* 이름 */}
             <div className='flex flex-row '>
               <div className='text-[#212E56] pl-[15px] pr-[15px] rounded-lg bg-slate-200 w-[350px] h-[90px] pt-[10px] text-center text-[40px] '>
                 {langData["c3-q"]}
               </div>
-              <input className='ml-[5px] w-[390px] h-[90px] text-black pl-2 text-[40px]' />
+              <input
+                className='ml-[5px] w-[390px] h-[90px] text-black pl-2 text-[40px]'
+                onChange={(e) =>
+                  setInputData({ ...inputData, name: e.target.value })
+                }
+              />
             </div>
-            <div className='mt-[26px]'></div>
+            ,<div className='mt-[40px]'></div>
             {/* 픽업위치 */}
             <div className='flex flex-col'>
               <div className='bg-slate-200 h-[100px] w-[720px] pl-[15px] flex items-center rounded-lg'>
@@ -166,11 +281,14 @@ export default function Main() {
                 </div>
               </div>
               <div className='mt-[3px]'></div>
-              <input className='w-[720px] h-[85px] text-black text-[45px] pl-5' />
+              <input
+                className='w-[720px] h-[85px] text-black text-[45px] pl-5'
+                onChange={(e) =>
+                  setInputData({ ...inputData, location: e.target.value })
+                }
+              />
             </div>
-
-            <div className='mt-[26px]'></div>
-
+            ,<div className='mt-[40px]'></div>
             {/* 픽업주소 */}
             <div className='flex flex-col'>
               <div className='bg-slate-200 w-[720px] pl-[15px] h-[140px] pt-[10px] rounded-lg'>
@@ -184,11 +302,14 @@ export default function Main() {
                 </div>
               </div>
               <div className='mt-[3px] '></div>
-              <input className='w-[720px] h-[85px] text-black text-[40px] pl-5' />
+              <input
+                className='w-[720px] h-[85px] text-black text-[40px] pl-5'
+                onChange={(e) =>
+                  setInputData({ ...inputData, address: e.target.value })
+                }
+              />
             </div>
-
-            <div className='mt-[26px]'></div>
-
+            ,<div className='mt-[40px]'></div>
             {/* 고객수 */}
             <div className='flex flex-col'>
               <div className='bg-slate-200 h-[100px] w-[720px] pl-[15px] rounded-lg flex items-center'>
@@ -202,17 +323,20 @@ export default function Main() {
               <div className='mt-[3px]'></div>
 
               <div className='bg-white pl-[30px] h-[160px] w-[720px] pr-[30px]'>
-                <div className='flex justify-between'>
+                <div className='flex justify-between px-[30px]'>
                   <div className='flex items-center mt-[12px]'>
                     <input
-                      id='default-radio-1'
+                      id='pcoung-1'
                       type='radio'
                       value=''
-                      name='default-radio'
+                      name='pcoung'
                       className='w-10 h-10 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                      onClick={(e) =>
+                        setInputData({ ...inputData, passengersCount: "1" })
+                      }
                     />
                     <label
-                      htmlFor='default-radio-1'
+                      htmlFor='pcoung-1'
                       className='ml-[12px] text-[35px] text-[#212E56]'
                     >
                       1
@@ -220,14 +344,17 @@ export default function Main() {
                   </div>
                   <div className='flex items-center mt-[12px]'>
                     <input
-                      id='default-radio-1'
+                      id='pcoung-1'
                       type='radio'
                       value=''
-                      name='default-radio'
+                      name='pcoung'
                       className='w-10 h-10 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                      onClick={(e) =>
+                        setInputData({ ...inputData, passengersCount: "2" })
+                      }
                     />
                     <label
-                      htmlFor='default-radio-1'
+                      htmlFor='pcoung-1'
                       className='ml-[12px] text-[35px] text-[#212E56]'
                     >
                       2
@@ -235,31 +362,37 @@ export default function Main() {
                   </div>
                   <div className='flex items-center mt-[12px]'>
                     <input
-                      id='default-radio-1'
+                      id='pcoung-1'
                       type='radio'
                       value=''
-                      name='default-radio'
+                      name='pcoung'
                       className='w-10 h-10 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                      onClick={(e) =>
+                        setInputData({ ...inputData, passengersCount: "3" })
+                      }
                     />
                     <label
-                      htmlFor='default-radio-1'
+                      htmlFor='pcoung-1'
                       className='ml-[12px] text-[35px] text-[#212E56]'
                     >
                       3
                     </label>
                   </div>
                 </div>
-                <div className='flex justify-between pt-2'>
+                <div className='flex justify-between pt-2  px-[30px]'>
                   <div className='flex items-center mt-[12px]'>
                     <input
-                      id='default-radio-1'
+                      id='pcoung-1'
                       type='radio'
                       value=''
-                      name='default-radio'
+                      name='pcoung'
                       className='w-10 h-10 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                      onClick={(e) =>
+                        setInputData({ ...inputData, passengersCount: "4" })
+                      }
                     />
                     <label
-                      htmlFor='default-radio-1'
+                      htmlFor='pcoung-1'
                       className='ml-[12px] text-[35px] text-[#212E56]'
                     >
                       4
@@ -267,14 +400,17 @@ export default function Main() {
                   </div>
                   <div className='flex items-center mt-[12px]'>
                     <input
-                      id='default-radio-1'
+                      id='pcoung-1'
                       type='radio'
                       value=''
-                      name='default-radio'
+                      name='pcoung'
                       className='w-10 h-10 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                      onClick={(e) =>
+                        setInputData({ ...inputData, passengersCount: "5" })
+                      }
                     />
                     <label
-                      htmlFor='default-radio-1'
+                      htmlFor='pcoung-1'
                       className='ml-[12px] text-[35px] text-[#212E56]'
                     >
                       5
@@ -282,14 +418,17 @@ export default function Main() {
                   </div>
                   <div className='flex items-center mt-[12px]'>
                     <input
-                      id='default-radio-1'
+                      id='pcoung-1'
                       type='radio'
                       value=''
-                      name='default-radio'
+                      name='pcoung'
                       className='w-10 h-10 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                      onClick={(e) =>
+                        setInputData({ ...inputData, passengersCount: "6" })
+                      }
                     />
                     <label
-                      htmlFor='default-radio-1'
+                      htmlFor='pcoung-1'
                       className='ml-[12px] text-[35px] text-[#212E56]'
                     >
                       6
@@ -317,27 +456,35 @@ export default function Main() {
               ))} */}
               </div>
             </div>
-
-            <div className='mt-[26px]'></div>
-
+            ,<div className='mt-[40px]'></div>
             {/* 픽업날짜 */}
             <div className='flex flex-col'>
               <div className='bg-slate-200 w-[720px] pl-[15px] rounded-lg py-[10px] flex items-center'>
                 <div className='text-[#212E56] text-[40px]'>
                   {langData["c7-q-1"]}
                 </div>
-                <div className='text-[#1369F9] text-[35px] pl-[20px]'>
+                {/* <div className='text-[#1369F9] text-[35px] pl-[20px]'>
                   {langData["c7-q-2"]}
-                </div>
+                </div> */}
               </div>
               <div className='mt-[3px] '></div>
-              <input className='w-[720px] h-[75px] text-black text-[35px] pl-5' />
+              <div className='w-[720px] h-[75px]'>
+                <DatePicker
+                  className='text-[35px] rounded-2xl w-[720px] h-[70px] text-black '
+                  selected={picDate}
+                  onChange={(date: any) => setPicDate(date)}
+                  showTimeSelect
+                  timeFormat='HH:mm'
+                  timeIntervals={5}
+                  timeCaption='time'
+                  dateFormat='yyyy/MM/dd h:mm aa'
+                  customInput={<ExampleCustomInput />}
+                />
+              </div>
             </div>
-
-            <div className='mt-[26px]'></div>
-
+            ,<div className='mt-[40px]'></div>
             {/* 픽업시간 */}
-            <div className='flex flex-col'>
+            {/* <div className='flex flex-col'>
               <div className='bg-slate-200 w-[720px] pl-[15px] rounded-lg py-[10px] flex items-center'>
                 <div className='text-[#212E56] text-[40px]'>
                   {langData["c8-q-1"]}
@@ -348,10 +495,8 @@ export default function Main() {
               </div>
               <div className='mt-[3px] '></div>
               <input className='w-[720px] h-[75px] text-black text-[35px] pr-2 pl-5' />
-            </div>
-
-            <div className='mt-[26px]'></div>
-
+            </div> */}
+            {/* ,<div className='mt-[40px]'></div> */}
             {/* Whatsapp ID */}
             <div className='flex flex-col'>
               <div className='bg-slate-200 w-[720px] pl-[15px] py-[20px] rounded-lg'>
@@ -363,9 +508,13 @@ export default function Main() {
                 </div>
               </div>
               <div className='mt-[3px] '></div>
-              <input className='w-[720px] h-[75px] text-black text-[35px] pl-5' />
+              <input
+                className='w-[720px] h-[75px] text-black text-[35px] pl-5'
+                onChange={(e) =>
+                  setInputData({ ...inputData, whatappid: e.target.value })
+                }
+              />
             </div>
-
             {/* end */}
           </div>
           <div className='absolute top-[2880px] bg-[#212e56] w-full h-full'>
@@ -1398,9 +1547,9 @@ export default function Main() {
             <div className='rectangle-1'></div>
             <div className='group-26'>
               <div className='group-25'>
-                <Link className='submit' href={"/done"}>
+                <button className='submit' onClick={onSubmit}>
                   {langData["submit"]}
-                </Link>
+                </button>
               </div>
             </div>
           </div>
