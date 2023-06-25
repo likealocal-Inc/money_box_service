@@ -41,7 +41,9 @@ export default async function handler(
     const url = `${makeAPIURL("/order/out")}`;
 
     console.log(url);
-    res.status(200);
+    const result: any = {};
+    result["ok"] = "good";
+    res.status(200).json(result);
     // axios.post(url, data).then((d) => {
     //   if (d.data.ok === true) {
     //     res.status(200).json(d.data.data);

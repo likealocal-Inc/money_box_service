@@ -96,7 +96,6 @@ export default function Main() {
             setLoading(false);
             alert("요청실패");
           });
-        setLoading(false);
       }, 200);
     }
   };
