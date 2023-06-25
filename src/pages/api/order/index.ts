@@ -1,4 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { makeAPIURL } from "@/utils/constants";
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -38,7 +39,10 @@ export default async function handler(
       customPhone: "",
     };
 
-    axios.post("http://127.0.0.1:8080/api/order/out", data).then((d) => {
+    const url = `${makeAPIURL("/order/out")}`;
+
+    console.log(url);
+    axios.post(url, data).then((d) => {
       if (d.data.ok === true) {
         res.status(200).json(d.data.data);
       } else {
