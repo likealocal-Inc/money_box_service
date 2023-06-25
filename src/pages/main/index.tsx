@@ -33,6 +33,7 @@ export default function Main() {
   });
   const [loading, setLoading] = useState(false);
   const [langData, setLangData] = useState<any>();
+  const [lang, setLang] = useState("en");
   const [h, seth] = useState(4100);
   const [picDate, setPicDate] = useState<Date | null>(new Date());
   const passengersNum = [1, 2, 3, 4, 5, 6];
@@ -47,6 +48,7 @@ export default function Main() {
     if (tempLang === "jp") {
       seth(4100);
     }
+    setLang(tempLang);
     setLangData(langDic[tempLang]);
   }, []);
 
@@ -181,10 +183,18 @@ export default function Main() {
                 onChangeLang(lang as LangType);
               }}
             >
-              <option value='en'>English</option>
-              <option value='cns'>更换语言</option>
-              <option value='cnb'>更換語言</option>
-              <option value='jp'>言語を選択</option>
+              <option value='en' selected={lang === "en" ? true : false}>
+                English
+              </option>
+              <option value='cns' selected={lang === "cns" ? true : false}>
+                更换语言
+              </option>
+              <option value='cnb' selected={lang === "cnb" ? true : false}>
+                更換語言
+              </option>
+              <option value='jp' selected={lang === "jp" ? true : false}>
+                言語を選択
+              </option>
             </select>
           </div>
 
