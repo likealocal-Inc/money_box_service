@@ -9,7 +9,6 @@ import { forwardRef, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
-import Router from "next/router";
 
 export interface InputData {
   airport: string;
