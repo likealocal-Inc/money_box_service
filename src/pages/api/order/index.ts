@@ -42,13 +42,14 @@ export default async function handler(
     const url = `${makeAPIURL("/order/out")}`;
 
     console.log(url);
-    axios.post(url, data).then((d) => {
-      if (d.data.ok === true) {
-        res.status(200).json(d.data.data);
-      } else {
-        res.status(500).json(d.data);
-      }
-    });
+    res.status(200);
+    // axios.post(url, data).then((d) => {
+    //   if (d.data.ok === true) {
+    //     res.status(200).json(d.data.data);
+    //   } else {
+    //     res.status(500).json(d.data);
+    //   }
+    // });
   } catch (err) {
     console.log(err);
   }
