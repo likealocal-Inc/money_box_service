@@ -1,5 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { makeAPIURL } from "@/utils/constants";
+import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type Data = {
@@ -43,13 +44,13 @@ export default async function handler(
     const result: any = {};
     result["ok"] = "good";
     res.status(200).json(result);
-    // axios.post(url, data).then((d) => {
-    //   if (d.data.ok === true) {
-    //     res.status(200).json(d.data.data);
-    //   } else {
-    //     res.status(500).json(d.data);
-    //   }
-    // });
+    axios.post(url, data).then((d) => {
+      if (d.data.ok === true) {
+        res.status(200).json(d.data.data);
+      } else {
+        res.status(500).json(d.data);
+      }
+    });
   } catch (err) {
     console.log(err);
   }
