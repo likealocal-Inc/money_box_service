@@ -8,6 +8,7 @@ import { LangType } from "../main";
 
 export default function Done() {
   const [langData, setLangData] = useState<any>();
+  const [lang, setlang] = useState<LangType>("en");
   useEffect(() => {
     let tempLang: LangType = "en";
     const nowLang = localStorage.getItem("lang");
@@ -16,6 +17,7 @@ export default function Done() {
     } else {
       tempLang = nowLang as LangType;
     }
+    setlang(tempLang);
     setLangData(langDic[tempLang]);
   }, []);
 
@@ -69,12 +71,23 @@ export default function Done() {
         <div className='bg-[#ffffff] rounded-[10px] w-[720px] h-[390px] absolute left-[70px] top-[625px]'></div>
 
         <div className='w-[638px] h-[284px] static'>
-          <div
-            className='text-[#1369f9] text-left absolute left-[108px] top-[668px]'
-            style={{ font: "700 60px 'Inter', sans-serif" }}
-          >
-            01
-          </div>
+          {lang === "jp" ? (
+            <>
+              <div
+                className='text-[#1369f9] text-left absolute left-[108px] top-[668px]'
+                style={{ font: "700 60px 'Inter', sans-serif" }}
+              >
+                01
+              </div>
+            </>
+          ) : (
+            <div
+              className='text-[#1369f9] text-left absolute left-[108px] top-[668px]'
+              style={{ font: "700 60px 'Inter', sans-serif" }}
+            >
+              01
+            </div>
+          )}
 
           <div
             className='text-[#1369f9] text-left absolute left-[104px] top-[771px]'
@@ -90,13 +103,25 @@ export default function Done() {
             03
           </div>
 
-          <div
-            className='break-words text-[#000000] text-left absolute left-[214px] top-[663px] w-[527px] h-[84px]'
-            style={{ font: "400 32px/40px 'Cairo', sans-serif " }}
-          >
-            {langData["done-h2"]}
-            <br />
-          </div>
+          {lang === "jp" ? (
+            <>
+              <div
+                className='break-words text-[#000000] text-left absolute left-[214px] top-[665px] w-[527px] h-[84px]'
+                style={{ font: "400 30px/40px 'Cairo', sans-serif " }}
+              >
+                {langData["done-h2"]}
+                <br />
+              </div>
+            </>
+          ) : (
+            <div
+              className='break-words text-[#000000] text-left absolute left-[214px] top-[663px] w-[527px] h-[84px]'
+              style={{ font: "400 32px/40px 'Cairo', sans-serif " }}
+            >
+              {langData["done-h2"]}
+              <br />
+            </div>
+          )}
 
           <div
             className='text-[#000000] text-justified absolute left-[214px] top-[767px] w-[527px] h-[71px]'

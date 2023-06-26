@@ -40,7 +40,6 @@ export default async function handler(
 
     const url = `${makeAPIURL("/order/out")}`;
 
-    console.log(url);
     const result: any = {};
     result["ok"] = "good";
     res.status(200).json(result);

@@ -322,10 +322,10 @@ export default function Main() {
             <div className='flex flex-col'>
               <div className='bg-slate-200 h-[100px] w-[720px] pl-[15px] rounded-lg flex items-center'>
                 <div className='text-[#212E56] text-[40px]'>
-                  {langData["c6-q-2"]}
+                  {langData["c6-q-1"]}
                 </div>
                 <div className='text-[#1369F9] text-[35px] pl-[20px]'>
-                  {langData["c6-q-1"]}
+                  {langData["c6-q-2"]}
                 </div>
               </div>
               <div className='mt-[3px]'></div>
