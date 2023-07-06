@@ -163,7 +163,17 @@ export default function Done() {
         width={200}
         height={197}
         className='absolute left-[330px] top-[1311px]'
-        src='/img/English_done_qr.png'
+        src={
+          lang === "en"
+            ? "/img/english.png"
+            : lang === "cnb"
+            ? "/img/chinab.png"
+            : lang === "cns"
+            ? "/img/chinas.png"
+            : lang === "jp"
+            ? "/img/Japan_qu_moneybox_new.png"
+            : ""
+        }
         alt={""}
       />
 
