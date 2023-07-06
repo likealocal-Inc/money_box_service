@@ -83,6 +83,18 @@ export default function Main() {
       isOk = false;
     }
 
+    let date = new Date(inputData.picDate);
+    let formattedDate = date.toISOString().split("T")[0];
+    console.log();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let formattedTime =
+      (hours < 10 ? "0" : "") +
+      hours +
+      ":" +
+      (minutes < 10 ? "0" : "") +
+      minutes;
+    inputData.picDate = `${formattedDate} ${formattedTime}`;
     if (isOk === false) {
       alert("You have to Fill Everything");
     } else {
